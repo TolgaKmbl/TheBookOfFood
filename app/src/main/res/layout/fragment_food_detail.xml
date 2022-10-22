@@ -3,22 +3,74 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FoodDetailFragment">
 
-    <Button
-        android:id="@+id/food_detail_button"
+    <ImageView
+        android:id="@+id/foodDetailImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:minHeight="150dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_launcher_background"
+        android:layout_margin="10dp">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/foodDetailName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to food list"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_below="@id/foodDetailImage"
+        android:text="Food Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7dp"/>
 
-    </Button>
+    <TextView
+        android:id="@+id/foodDetailCalorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/foodDetailName"
+        android:text="Food Calorie"
+        android:textSize="17sp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/foodDetailCarbohydrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/foodDetailCalorie"
+        android:text="Food Carbohydrate"
+        android:textSize="17sp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7dp"/>
+
+    <TextView
+        android:id="@+id/foodDetailProtein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/foodDetailCarbohydrate"
+        android:text="Food Protein"
+        android:textSize="17sp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7dp"/>
+
+    <TextView
+        android:id="@+id/foodDetailFat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/foodDetailProtein"
+        android:text="Food Fat"
+        android:textSize="17sp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7dp"/>
+
+
+</RelativeLayout>
 </layout>
