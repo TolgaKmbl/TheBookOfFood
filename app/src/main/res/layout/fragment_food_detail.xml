@@ -25,21 +25,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/foodDetailImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="7dp"
         android:text="Food Name"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="7dp"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/foodDetailCalorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/foodDetailName"
-        android:text="Food Calorie"
-        android:textSize="17sp"
         android:layout_centerHorizontal="true"
-        android:layout_margin="7dp"/>
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="7dp"
+        android:text="Food Calorie"
+        android:textSize="17sp" />
 
     <TextView
         android:id="@+id/foodDetailCarbohydrate"

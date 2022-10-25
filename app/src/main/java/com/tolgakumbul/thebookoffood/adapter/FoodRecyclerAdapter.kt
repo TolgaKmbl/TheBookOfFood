@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.tolgakumbul.thebookoffood.R
 import com.tolgakumbul.thebookoffood.model.Food
+import com.tolgakumbul.thebookoffood.view.FoodListFragmentDirections
 
 class FoodRecyclerAdapter(val foodList: ArrayList<Food>) :
     RecyclerView.Adapter<FoodRecyclerAdapter.FoodViewHolder>() {
@@ -25,13 +27,19 @@ class FoodRecyclerAdapter(val foodList: ArrayList<Food>) :
         holder.itemView.findViewById<TextView>(R.id.foodCalorie).text =
             foodList.get(position).foodCalorie
         //TODO: image add
+
+        holder.itemView.setOnClickListener {
+            val action = FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment()
+            action.foodId = 0
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
         return foodList.size
     }
 
-    fun reloadFoodList(newFoodList: ArrayList<Food>) {
+    fun reloadFoodList(newFoodList: List<Food>) {
         foodList.clear()
         foodList.addAll(newFoodList)
         /* Reload the adapter for all data*/
