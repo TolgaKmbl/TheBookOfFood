@@ -3,11 +3,14 @@ package com.tolgakumbul.thebookoffood.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.tolgakumbul.thebookoffood.R
 import com.tolgakumbul.thebookoffood.model.Food
+import com.tolgakumbul.thebookoffood.util.downloadImg
+import com.tolgakumbul.thebookoffood.util.placeHolderFactory
 import com.tolgakumbul.thebookoffood.view.FoodListFragmentDirections
 
 class FoodRecyclerAdapter(val foodList: ArrayList<Food>) :
@@ -26,7 +29,10 @@ class FoodRecyclerAdapter(val foodList: ArrayList<Food>) :
         holder.itemView.findViewById<TextView>(R.id.foodName).text = foodList.get(position).foodName
         holder.itemView.findViewById<TextView>(R.id.foodCalorie).text =
             foodList.get(position).foodCalorie
-        //TODO: image add
+        holder.itemView.findViewById<ImageView>(R.id.imageView).downloadImg(
+            foodList.get(position).foodImage,
+            placeHolderFactory(holder.itemView.context)
+        )
 
         holder.itemView.setOnClickListener {
             val action = FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment()

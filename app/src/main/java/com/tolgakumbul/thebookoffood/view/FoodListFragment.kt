@@ -44,6 +44,15 @@ class FoodListFragment : Fragment() {
         val foodListRecyclerView = view.findViewById(R.id.foodListRecyclerView) as RecyclerView
         foodListRecyclerView.layoutManager = LinearLayoutManager(context)
         foodListRecyclerView.adapter = recyclerFoodAdapter
+
+        swipeRefreshLayout.setOnRefreshListener {
+            foodListErrorMsg.visibility = View.GONE
+            foodListProgressBar.visibility = View.VISIBLE
+            foodListRecyclerView.visibility = View.GONE
+            viewModel.refreshData()
+            swipeRefreshLayout.isRefreshing = false
+        }
+
         observeLiveData()
     }
 
