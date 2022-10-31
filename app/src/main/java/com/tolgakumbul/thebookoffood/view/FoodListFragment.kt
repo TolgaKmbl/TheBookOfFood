@@ -49,7 +49,7 @@ class FoodListFragment : Fragment() {
             foodListErrorMsg.visibility = View.GONE
             foodListProgressBar.visibility = View.VISIBLE
             foodListRecyclerView.visibility = View.GONE
-            viewModel.refreshData()
+            viewModel.refreshDataRefreshLayout()
             swipeRefreshLayout.isRefreshing = false
         }
 
