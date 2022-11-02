@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.tolgakumbul.thebookoffood.R
+import com.tolgakumbul.thebookoffood.util.downloadImg
+import com.tolgakumbul.thebookoffood.util.placeHolderFactory
 import com.tolgakumbul.thebookoffood.viewmodel.FoodDetailViewModel
 
 class FoodDetailFragment : Fragment() {
@@ -31,14 +34,17 @@ class FoodDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.let {
+            foodId = FoodDetailFragmentArgs.fromBundle(it).foodId
+        }
         viewModel = ViewModelProviders.of(this).get(FoodDetailViewModel::class.java)
-        viewModel.fetchData()
+        viewModel.fetchData(foodId)
         observeLiveData()
     }
 
     fun observeLiveData() {
-        viewModel.foodDetail.observe(viewLifecycleOwner, Observer {
-            it?.let {
+        viewModel.foodDetail.observe(viewLifecycleOwner, Observer { food ->
+            food?.let {
                 val foodDetailName = view?.findViewById(R.id.foodDetailName) as TextView
                 foodDetailName.text = it.foodName
                 val foodCalorie = view?.findViewById(R.id.foodDetailCalorie) as TextView
@@ -49,6 +55,10 @@ class FoodDetailFragment : Fragment() {
                 foodDetailProtein.text = it.foodProtein
                 val foodDetailFat = view?.findViewById(R.id.foodDetailFat) as TextView
                 foodDetailFat.text = it.foodFat
+                val foodDetailImage = view?.findViewById(R.id.foodDetailImage) as ImageView
+                context?.let {
+                    foodDetailImage.downloadImg(food.foodImage, placeHolderFactory(it))
+                }
             }
         })
     }

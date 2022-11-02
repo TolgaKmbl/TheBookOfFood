@@ -1,16 +1,20 @@
 package com.tolgakumbul.thebookoffood.viewmodel
 
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.tolgakumbul.thebookoffood.model.Food
+import com.tolgakumbul.thebookoffood.service.FoodDatabase
+import kotlinx.coroutines.launch
 
-class FoodDetailViewModel: ViewModel()  {
+class FoodDetailViewModel(application: Application) : BaseViewModel(application) {
 
     val foodDetail = MutableLiveData<Food>()
 
-    fun fetchData(){
-        val banana = Food("Banana", "5", "6", "7","8", "test.com")
-
-        foodDetail.value = banana
+    fun fetchData(id: Int?) {
+        launch {
+            if(id != null){
+                foodDetail.value = FoodDatabase(getApplication()).foodDao().getFoodById(id)
+            }
+        }
     }
 }
